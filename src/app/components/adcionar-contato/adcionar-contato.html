@@ -1,0 +1,74 @@
+<form class="mt-8 max-w-sm mx-auto">
+  <div class="mb-5">
+    <label for="nome" class="block mb-2.5 text-sm font-medium text-heading">Nome</label>
+    <input type="text" id="nome" [formField]="contatoForm.nome"
+      class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+      placeholder="Brunão" />
+  </div>
+  @if (this.contatoForm.nome().touched()) {
+  @for (erro of this.contatoForm.nome().errors(); track erro) {
+  <div class="p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft" role="alert">
+    <span class="font-medium">{{ erro.message }}</span>
+  </div>
+  }
+  }
+
+  <div class="mb-5">
+    <label for="telefone" class="block mb-2.5 text-sm font-medium text-heading">Telefone</label>
+    <input type="text" id="telefone" [formField]="contatoForm.telefone"
+      class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+      placeholder="(00) 00000-0000" />
+  </div>
+  @if (this.contatoForm.telefone().touched()) {
+  @for (erro of this.contatoForm.telefone().errors(); track erro) {
+  <div class="p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft" role="alert">
+    <span class="font-medium">{{ erro.message }}</span>
+  </div>
+  }
+  }
+
+  <div class="mb-5">
+    <label for="email" class="block mb-2.5 text-sm font-medium text-heading">Email</label>
+    <input type="email" id="email" [formField]="contatoForm.email"
+      class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+      placeholder="brunao@resenha.com" />
+  </div>
+  @if (this.contatoForm.email().touched()) {
+  @for (erro of this.contatoForm.email().errors(); track erro) {
+  <div class="p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft" role="alert">
+    <span class="font-medium">{{ erro.message }}</span>
+  </div>
+  }
+  }
+
+  <div class="mb-5">
+    <label for="aniversario" class="block mb-2.5 text-sm font-medium text-heading">Aniversário</label>
+    <input type="date" id="aniversario" [formField]="contatoForm.aniversario"
+      class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" />
+  </div>
+  @if (this.contatoForm.aniversario().touched()) {
+  @for (erro of this.contatoForm.aniversario().errors(); track erro) {
+  <div class="p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft" role="alert">
+    <span class="font-medium">{{ erro.message }}</span>
+  </div>
+  }
+  }
+
+  <div class="mb-5">
+    <label for="Tipo" class="block mb-2.5 text-sm font-medium text-heading">Tipo de contato</label>
+    <select id="Tipo" [formField]="contatoForm.tipo"
+      class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body">
+      <option selected>Escolha um tipo</option>-
+      <option value={tipoContato.Amigo}>Amigo</option>
+      <option value={tipoContato.Família}>Família</option>
+      <option value={tipoContato.Trabalho}>Trabalho</option>
+      <option value={tipoContato.Pessoal}>Pessoal</option>
+      <option value={tipoContato.Outros}>Outros</option>
+    </select>
+  </div>
+
+  <button type="button" (click)="adicionarContato()"
+    class="text-white bg-brand hover:bg-brand-hover focus:ring-4 focus:outline-none focus:ring-brand-light font-medium rounded-base text-sm w-full px-5 py-2.5 text-center shadow-xs">
+    Adicionar contato
+  </button>
+</form>
