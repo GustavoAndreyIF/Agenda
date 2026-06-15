@@ -38,16 +38,16 @@
           </td>
           <td class="px-6 py-4">
             @switch (contato.tipo) {
-              @case ('familia') {
+              @case ('{tipoContato.Familia}') {
                 Família
               }
-              @case ('amigo') {
+              @case ('{tipoContato.Amigo}') {
                 Amigo
               }
-              @case ('trabalho') {
+              @case ('{tipoContato.Trabalho}') {
                 Trabalho
               }
-              @case ('pessoal') {
+              @case ('{tipoContato.Pessoal}') {
                 Pessoal
               }
               @default {
