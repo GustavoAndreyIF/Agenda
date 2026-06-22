@@ -1,7 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { form, FormField, required, email, minLength, pattern } from '@angular/forms/signals';
 import { Contato, tipoContato } from '../../models/contato';
-import { listaDeContatos } from '../../shared/lista-de-contatos';
+import { AgendaService } from '../../service/agenda-service';
 
 @Component({
   selector: 'app-adcionar-contato',
@@ -10,6 +10,8 @@ import { listaDeContatos } from '../../shared/lista-de-contatos';
   styleUrl: './adcionar-contato.css',
 })
 export class AdcionarContato {
+  private readonly agendaService = inject(AgendaService);
+
   contatoModel = signal<Contato>({
     id: Math.floor(Math.random() * 1000),
     nome: '',
@@ -35,9 +37,8 @@ export class AdcionarContato {
     if (this.contatoForm.nome().valid() && this.contatoForm.telefone().valid() && this.contatoForm.tipo().valid()) {
       const novoContato = this.contatoModel();
 
-      listaDeContatos.update((contatos) => [...contatos, novoContato]);
-      console.log(novoContato);
-      console.log(listaDeContatos().values());
+      this.agendaService.adicionarContato(novoContato)
+
       this.contatoModel.set({
         id: Math.floor(Math.random() * 1000),
         nome: '',
