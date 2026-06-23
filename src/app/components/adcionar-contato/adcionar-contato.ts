@@ -17,7 +17,7 @@ export class AdcionarContato {
     nome: '',
     telefone: '',
     email: '',
-    aniversario: new Date(),
+    aniversario: '',
     tipo: tipoContato.Outros as string,
   })
 
@@ -34,10 +34,11 @@ export class AdcionarContato {
   ))
 
   adicionarContato() {
-    if (this.agendaService.checarTelefoneExistente(this.contatoModel().telefone).pipe(map(exists => !exists))
+    if (this.agendaService.checarTelefoneExistente(this.contatoModel().telefone).subscribe(exists => !exists)
       && this.contatoForm.nome().valid()
       && this.contatoForm.telefone().valid()
-      && this.contatoForm.tipo().valid()) {
+      && this.contatoForm.tipo().valid()
+    ) {
       const novoContato = this.contatoModel();
 
       this.agendaService.adicionarContato(novoContato).subscribe({
@@ -46,7 +47,7 @@ export class AdcionarContato {
             nome: '',
             telefone: '',
             email: '',
-            aniversario: new Date(),
+            aniversario: '',
             tipo: tipoContato.Outros as string,
           });
 

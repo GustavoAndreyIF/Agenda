@@ -1,0 +1,52 @@
+<div class="m-8 relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
+  <table class="w-full text-sm text-left rtl:text-right text-body">
+    <thead class="text-sm text-body bg-neutral-secondary-soft border-b rounded-base border-default">
+      <tr>
+        <th scope="col" class="px-6 py-3 font-medium">Nome</th>
+        <th scope="col" class="px-6 py-3 font-medium">Telefone</th>
+        <th scope="col" class="px-6 py-3 font-medium">Email</th>
+        <th scope="col" class="px-6 py-3 font-medium">Aniversário</th>
+        <th scope="col" class="px-6 py-3 font-medium">Tipo de contato</th>
+        <th scope="col" class="px-6 py-3 font-medium">
+          <button type="button"
+            class="inline-flex items-center justify-center w-8 h-8 text-white bg-brand hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs rounded-base focus:outline-none"
+            (click)="exibeListaDeContatos()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="block w-5 h-5" viewBox="0 -960 960 960" fill="currentColor"
+              aria-hidden="true">
+              <path
+                d="M480-160q-134 0-227-93t-93-227q0-134 93-227t227-93q69 0 132 28.5T720-690v-110h80v280H520v-80h168q-32-56-87.5-88T480-720q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h84q-28 106-114 173t-196 67Z" />
+            </svg>
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (contato of contatos; track contato.id ?? contato.nome) {
+      <tr class="bg-neutral-primary border-b border-default">
+        <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
+          {{ contato.nome }}
+        </th>
+        <td class="px-6 py-4">
+          {{ contato.telefone }}
+        </td>
+        <td class="px-6 py-4">
+          {{ contato.email }}
+        </td>
+        <td class="px-6 py-4">
+          {{ contato.aniversario.slice(8, 10) }}/{{ contato.aniversario.slice(5, 7) }}/{{ contato.aniversario.slice(0,
+          4) }}
+        </td>
+        <td class="px-6 py-4">
+          @switch (contato.tipo) {
+          @case ('{tipoContato.Amigo}') { Amigo }
+          @case ('{tipoContato.Família}') { Família }
+          @case ('{tipoContato.Trabalho}') { Trabalho }
+          @case ('{tipoContato.Pessoal}') { Pessoal }
+          @default { Outros }
+          }
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

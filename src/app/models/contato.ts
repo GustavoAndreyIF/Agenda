@@ -7,9 +7,10 @@ export enum tipoContato {
 }
 
 export interface Contato {
+  id?: string,
   nome: string,
   telefone: string,
   email: string,
-  aniversario: Date,
+  aniversario: string,
   tipo: tipoContato | string,
 }
