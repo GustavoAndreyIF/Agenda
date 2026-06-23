@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { form, FormField, required, email, minLength, pattern } from '@angular/forms/signals';
 import { Contato, tipoContato } from '../../models/contato';
 import { AgendaService } from '../../service/agenda-service';
+import { map } from 'rxjs/internal/operators/map';
 
 @Component({
   selector: 'app-adcionar-contato',
@@ -33,7 +34,10 @@ export class AdcionarContato {
   ))
 
   adicionarContato() {
-    if (this.contatoForm.nome().valid() && this.contatoForm.telefone().valid() && this.contatoForm.tipo().valid()) {
+    if (this.agendaService.checarTelefoneExistente(this.contatoModel().telefone).pipe(map(exists => !exists))
+      && this.contatoForm.nome().valid()
+      && this.contatoForm.telefone().valid()
+      && this.contatoForm.tipo().valid()) {
       const novoContato = this.contatoModel();
 
       this.agendaService.adicionarContato(novoContato).subscribe({

@@ -1,5 +1,4 @@
 {
-  "$schema": "./node_modules/json-server/schema.json",
   "contatos": [
     {
       "id": "1",
@@ -10,12 +9,21 @@
       "tipo": "{tipoContato.Amigo}"
     },
     {
-      "nome": "Gustavo",
-      "telefone": "11999999999",
-      "email": "gustavo@example.com",
+      "nome": "Teste",
+      "telefone": "1234567890",
+      "email": "",
       "aniversario": "2026-06-23T00:00:00.000Z",
-      "tipo": "Amigo",
-      "id": "SkP0VgqkoGQ"
+      "tipo": "{tipoContato.Família}",
+      "id": "71o3ne-xDik"
+    },
+    {
+      "nome": "Leonardo",
+      "telefone": "1234567890",
+      "email": "",
+      "aniversario": "2026-06-23T16:35:31.251Z",
+      "tipo": "{tipoContato.Trabalho}",
+      "id": "437UjpXgbQY"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
