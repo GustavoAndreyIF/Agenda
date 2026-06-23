@@ -1,17 +1,20 @@
-import { Service, Signal, signal } from '@angular/core';
-import { Contato, tipoContato } from '../models/contato';
-import { listaDeContatos } from '../shared/lista-de-contatos';
+import { inject, Service } from '@angular/core';
+import { Contato } from '../models/contato';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Service()
 export class AgendaService {
+    private http = inject(HttpClient);
+    private apiUrl = 'http://localhost:3000/contatos';
 
-    adicionarContato(novoContato: Contato): void {
-        listaDeContatos.update((contatos) => [...contatos, novoContato]);
+    adicionarContato(novoContato: Omit<Contato, 'id'>): Observable<Contato> {
+        return this.http.post<Contato>(this.apiUrl, novoContato);
     }
 
-    removerContato(){}
+    removerContato() { }
 
-    procurarContato(){}
+    procurarContato() { }
 
-  }
+}
 

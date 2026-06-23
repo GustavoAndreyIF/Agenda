@@ -13,7 +13,6 @@ export class AdcionarContato {
   private readonly agendaService = inject(AgendaService);
 
   contatoModel = signal<Contato>({
-    id: Math.floor(Math.random() * 1000),
     nome: '',
     telefone: '',
     email: '',
@@ -37,15 +36,18 @@ export class AdcionarContato {
     if (this.contatoForm.nome().valid() && this.contatoForm.telefone().valid() && this.contatoForm.tipo().valid()) {
       const novoContato = this.contatoModel();
 
-      this.agendaService.adicionarContato(novoContato)
+      this.agendaService.adicionarContato(novoContato).subscribe({
+        next: () => {
+          this.contatoModel.set({
+            nome: '',
+            telefone: '',
+            email: '',
+            aniversario: new Date(),
+            tipo: tipoContato.Outros as string,
+          });
 
-      this.contatoModel.set({
-        id: Math.floor(Math.random() * 1000),
-        nome: '',
-        telefone: '',
-        email: '',
-        aniversario: new Date(),
-        tipo: tipoContato.Outros as string,
+          this.contatoForm().reset();
+        }
       });
     }
   }
