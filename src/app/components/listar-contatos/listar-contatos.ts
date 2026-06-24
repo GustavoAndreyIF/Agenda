@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { tipoContato, Contato } from '../../models/contato';
+import { Component, OnInit, inject } from '@angular/core';
+import { tipoContato, ContatoPayload } from '../../models/contato';
 import { AgendaService } from '../../service/agenda-service';
 
 @Component({
@@ -8,19 +8,35 @@ import { AgendaService } from '../../service/agenda-service';
   templateUrl: './listar-contatos.html',
   styleUrl: './listar-contatos.css',
 })
-export class ListarContatos {
+export class ListarContatos implements OnInit {
   private readonly agendaService = inject(AgendaService);
-  
-  contatos: Contato[] = [];
+
+  contatos: ContatoPayload[] = [];
   tipoContato = tipoContato;
 
-  public exibeListaDeContatos(): void {
+  ngOnInit() {
+    this.exibeListaDeContatos()
+  }
+
+  exibeListaDeContatos(): void {
     this.agendaService.listarContatos().subscribe({
       next: (contatos) => {
         this.contatos = contatos;
       },
       error: (error) => {
         console.error('Erro ao listar contatos:', error);
+      }
+    });
+  }
+
+  removerContato(id: string): void {
+    this.agendaService.removerContato(id).subscribe({
+      next: () => {
+        this.exibeListaDeContatos();
+      },
+      error: (error) => {
+        console.error('Erro ao remover contato:', error);
+        this.exibeListaDeContatos();
       }
     });
   }

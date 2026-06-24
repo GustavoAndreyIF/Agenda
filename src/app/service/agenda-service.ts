@@ -1,5 +1,5 @@
 import { inject, Service } from '@angular/core';
-import { Contato } from '../models/contato';
+import { Contato, ContatoPayload } from '../models/contato';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 
@@ -7,6 +7,7 @@ import { map, Observable } from 'rxjs';
 export class AgendaService {
     private http = inject(HttpClient);
     private apiUrl = 'http://localhost:3000/contatos';
+
 
     adicionarContato(novoContato: Omit<Contato, 'id'>): Observable<Contato> {
         return this.http.post<Contato>(this.apiUrl, novoContato);
@@ -30,8 +31,8 @@ export class AgendaService {
         );
     }
 
-    listarContatos(): Observable<Contato[]> {
-        return this.http.get<Contato[]>(this.apiUrl);
+    listarContatos(): Observable<ContatoPayload[]> {
+        return this.http.get<ContatoPayload[]>(this.apiUrl);
     }
 }
 

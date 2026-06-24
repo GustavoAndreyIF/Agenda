@@ -1,60 +1,36 @@
 {
   "contatos": [
     {
-      "id": "1",
-      "nome": "gustavo",
-      "telefone": "1234567890",
-      "email": "gustavo@exemple",
-      "aniversario": "2026-06-23T00:00:00.000Z",
-      "tipo": "{tipoContato.Amigo}"
-    },
-    {
       "nome": "teste1",
-      "telefone": "1234567890",
+      "telefone": "(12) 3456-7890",
       "email": "",
-      "aniversario": "2006-06-26",
+      "aniversario": "",
       "tipo": "{tipoContato.Trabalho}",
-      "id": "82TT7TBZB18"
+      "id": "F7st9DPQq70"
     },
     {
-      "nome": "teste2",
-      "telefone": "1234567890",
-      "email": "",
-      "aniversario": "2334-02-11",
+      "nome": "Teste12",
+      "telefone": "(21) 91234-5678",
+      "email": "teste@gmail.com",
+      "aniversario": "2005-06-12",
       "tipo": "{tipoContato.Trabalho}",
-      "id": "z7elGLnbSFY"
+      "id": "yNfLXUUkVLY"
     },
     {
-      "nome": "teste3",
-      "telefone": "1234567890",
-      "email": "",
-      "aniversario": "1231-12-12",
-      "tipo": "{tipoContato.Amigo}",
-      "id": "ikdWxKfIZ8I"
-    },
-    {
-      "nome": "teste4 ",
-      "telefone": "1234567890",
-      "email": "",
-      "aniversario": "0124-05-04",
-      "tipo": "{tipoContato.Trabalho}",
-      "id": "LfpOzjCb60g"
-    },
-    {
-      "nome": "teste5",
-      "telefone": "1234567890",
+      "nome": "teste1212",
+      "telefone": "(00) 00000-0000",
       "email": "",
       "aniversario": "",
       "tipo": "{tipoContato.Família}",
-      "id": "8J2-gcxVMis"
+      "id": "ML4Aj0lsEvM"
     },
     {
-      "nome": "teste6",
-      "telefone": "1234567890",
+      "nome": "teste456",
+      "telefone": "(12) 91212-1212",
       "email": "",
       "aniversario": "",
-      "tipo": "{tipoContato.Pessoal}",
-      "id": "Ihr3SbwFVe4"
+      "tipo": "{tipoContato.Família}",
+      "id": "6AHL5g2N1GE"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

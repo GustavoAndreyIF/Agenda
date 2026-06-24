@@ -17,7 +17,7 @@
     <label for="telefone" class="block mb-2.5 text-sm font-medium text-heading">Telefone</label>
     <input type="text" id="telefone" [formField]="contatoForm.telefone"
       class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
-      placeholder="(00) 00000-0000" />
+      placeholder="(00) 00000-0000" mask="(00) 00000-0000"/>
   </div>
   @if (this.contatoForm.telefone().touched()) {
   @for (erro of this.contatoForm.telefone().errors(); track erro) {
@@ -66,6 +66,11 @@
       <option value={tipoContato.Outros}>Outros</option>
     </select>
   </div>
+  @if (numeroContatoInvalido()) {
+  <div class="p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft" role="alert">
+    <span class="font-medium">Contato já existe</span>
+  </div>
+  }
 
   <button type="button" (click)="adicionarContato()"
     class="text-white bg-brand hover:bg-brand-hover focus:ring-4 focus:outline-none focus:ring-brand-light font-medium rounded-base text-sm w-full px-5 py-2.5 text-center shadow-xs">
