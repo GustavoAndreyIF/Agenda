@@ -10,7 +10,7 @@
         <th scope="col" class="px-6 py-3 font-medium">
           <button type="button"
             class="inline-flex items-center justify-center w-8 h-8 text-white bg-brand hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs rounded-base focus:outline-none"
-            (click)="exibeListaDeContatos()">
+            (click)="carregarContatos()">
             <svg xmlns="http://www.w3.org/2000/svg" class="block w-5 h-5" viewBox="0 -960 960 960" fill="currentColor"
               aria-hidden="true">
               <path
@@ -21,7 +21,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (contato of contatos; track contato.id ?? contato.nome) {
+      @for (contato of listaDeContatos(); track contato.id ?? contato.nome) {
       <tr class="bg-neutral-primary border-b border-default">
         <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
           {{ contato.nome }}

@@ -32,6 +32,7 @@ export class AdcionarContato {
 
     email(schemaPath.email, { message: 'Email inválido' })
   ))
+selectedValue: any;
 
   adicionarContato() {
     this.agendaService.checarTelefoneExistente(this.contatoModel().telefone).subscribe(exists => {
@@ -55,6 +56,7 @@ export class AdcionarContato {
               tipo: tipoContato.Outros as string,
             });
             this.contatoForm().reset();
+            this.agendaService.adicionarContatosNaLista();
           }
         });
       }

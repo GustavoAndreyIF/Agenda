@@ -2,6 +2,7 @@ import { inject, Service } from '@angular/core';
 import { Contato, ContatoPayload } from '../models/contato';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
+import { listaDeContatos } from '../shared/lista-de-contatos';
 
 @Service()
 export class AgendaService {
@@ -20,6 +21,7 @@ export class AgendaService {
     procurarContato(id: string): Observable<Contato> {
         return this.http.get<Contato>(`${this.apiUrl}/${id}`);
     }
+
     /**
      * Retorna true se o telefone já existe na lista de contatos, caso contrário retorna false.
      * @param telefone O telefone a ser verificado.
@@ -33,6 +35,13 @@ export class AgendaService {
 
     listarContatos(): Observable<ContatoPayload[]> {
         return this.http.get<ContatoPayload[]>(this.apiUrl);
+    }
+
+    adicionarContatosNaLista(): void {
+        this.listarContatos().subscribe({
+            next: (contatos) => listaDeContatos.set([...contatos]),
+            error: (err) => console.error('Erro ao listar contatos:', err)
+        });
     }
 }
 

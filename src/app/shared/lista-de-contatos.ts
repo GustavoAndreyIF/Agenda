@@ -1,5 +1,5 @@
 import { signal } from '@angular/core';
-import { Contato } from '../models/contato';
+import { ContatoPayload } from '../models/contato';
 
-export const listaDeContatos = signal<Contato[]>([])
+export const listaDeContatos = signal<ContatoPayload[]>([])
 

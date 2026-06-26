@@ -1,4 +1,5 @@
-<form class="mt-8 max-w-sm mx-auto">
+<form class="mt-8 mx-auto bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs
+">
   <div class="mb-5">
     <label for="nome" class="block mb-2.5 text-sm font-medium text-heading">Nome</label>
     <input type="text" id="nome" [formField]="contatoForm.nome"
@@ -17,7 +18,7 @@
     <label for="telefone" class="block mb-2.5 text-sm font-medium text-heading">Telefone</label>
     <input type="text" id="telefone" [formField]="contatoForm.telefone"
       class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
-      placeholder="(00) 00000-0000" mask="(00) 00000-0000"/>
+      placeholder="(00) 00000-0000" mask="(00) 00000-0000" />
   </div>
   @if (this.contatoForm.telefone().touched()) {
   @for (erro of this.contatoForm.telefone().errors(); track erro) {
@@ -57,15 +58,16 @@
   <div class="mb-5">
     <label for="Tipo" class="block mb-2.5 text-sm font-medium text-heading">Tipo de contato</label>
     <select id="Tipo" [formField]="contatoForm.tipo"
-      class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body">
-      <option selected>Escolha um tipo</option>-
+      class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base overflow-auto focus:ring-brand focus:border-brand shadow-xs placeholder:text-body">
+      <option value="" disabled selected>Escolha um tipo</option>
       <option value={tipoContato.Amigo}>Amigo</option>
       <option value={tipoContato.Família}>Família</option>
       <option value={tipoContato.Trabalho}>Trabalho</option>
       <option value={tipoContato.Pessoal}>Pessoal</option>
-      <option value={tipoContato.Outros}>Outros</option>
+      <option value={tipoContato.Outros} default>Outros</option>
     </select>
   </div>
+  
   @if (numeroContatoInvalido()) {
   <div class="p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft" role="alert">
     <span class="font-medium">Contato já existe</span>

@@ -25,12 +25,28 @@
       "id": "ML4Aj0lsEvM"
     },
     {
-      "nome": "teste456",
-      "telefone": "(12) 91212-1212",
+      "nome": "teste78",
+      "telefone": "(87) 92365-9674",
       "email": "",
       "aniversario": "",
-      "tipo": "{tipoContato.Família}",
-      "id": "6AHL5g2N1GE"
+      "tipo": "Outros",
+      "id": "znxf8ymm4rk"
+    },
+    {
+      "nome": "teste",
+      "telefone": "(87) 92365-9678",
+      "email": "",
+      "aniversario": "",
+      "tipo": "{tipoContato.Amigo}",
+      "id": "Q0lD5dqfWFs"
+    },
+    {
+      "nome": "teste56",
+      "telefone": "(87) 92365-9672",
+      "email": "",
+      "aniversario": "",
+      "tipo": "Outros",
+      "id": "AZdeupqilK4"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
