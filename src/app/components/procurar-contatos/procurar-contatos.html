@@ -1,0 +1,15 @@
+<div (submit)="this.buscarContatoPorNome()" (keydown.enter)="this.buscarContatoPorNome()" class="mx-4 bg-neutral-primary-soft block max-w p-6 border border-default rounded-base shadow-xs">
+  <div class="mb-2">
+    <label for="nome" class="block mb-2.5 text-sm font-medium text-heading">Pesquisar</label>
+    <input type="text" id="nome" [formField]="buscarForm" (keyup)="this.buscarContatoPorNome()"
+      class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+      placeholder="Digite um nome" />
+  </div>
+  @if (this.buscarForm().touched()) {
+  @for (erro of this.buscarForm().errors(); track erro) {
+  <div class="p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft" role="alert">
+    <span class="font-medium">{{ erro.message }}</span>
+  </div>
+  }
+  }
+</div>

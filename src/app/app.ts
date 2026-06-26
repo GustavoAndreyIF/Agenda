@@ -4,10 +4,11 @@ import { initFlowbite } from 'flowbite';
 import { AdcionarContato } from "./components/adcionar-contato/adcionar-contato";
 import { ListarContatos } from "./components/listar-contatos/listar-contatos";
 import { AgendaService } from './service/agenda-service';
+import { ProcurarContatos } from "./components/procurar-contatos/procurar-contatos";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, AdcionarContato, ListarContatos],
+  imports: [RouterOutlet, AdcionarContato, ListarContatos, ProcurarContatos],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

@@ -47,6 +47,14 @@
       "aniversario": "",
       "tipo": "Outros",
       "id": "AZdeupqilK4"
+    },
+    {
+      "nome": "Thiago",
+      "telefone": "(12) 98760-2873",
+      "email": "thiago@gmail.com",
+      "aniversario": "2004-12-09",
+      "tipo": "{tipoContato.Amigo}",
+      "id": "dRSMA7AC16s"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

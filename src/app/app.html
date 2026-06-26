@@ -1,5 +1,8 @@
-<div class="flex flex-row gap-2 w-full p-16 justify-center">
+<div class="flex flex-row gap-2 h-full w-full p-16 justify-center">
   <app-adcionar-contato />
-  <app-listar-contatos />
+  <div class="flex flex-col gap-2 h-full w-full">
+    <app-procurar-contatos />
+    <app-listar-contatos />
+  </div>
 </div>
 <router-outlet />

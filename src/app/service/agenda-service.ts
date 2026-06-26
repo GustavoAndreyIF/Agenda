@@ -43,5 +43,24 @@ export class AgendaService {
             error: (err) => console.error('Erro ao listar contatos:', err)
         });
     }
+
+    pesquisarContatosPorNome(nome: string): Observable<ContatoPayload[]> {
+        const nomePesquisa = nome.trim();
+
+        if (!nomePesquisa) {
+            return this.http.get<ContatoPayload[]>(this.apiUrl);
+        }
+
+        return this.http.get<ContatoPayload[]>(
+            `${this.apiUrl}?nome:contains=${encodeURIComponent(nomePesquisa)}`
+        );
+    }
+
+    atualizarContatosNaListaDaPesquisaPorNome(nome: string): void {
+        this.pesquisarContatosPorNome(nome).subscribe({
+            next: (contatos) => listaDeContatos.set([...contatos]),
+            error: (err) => console.error('Erro ao pesquisar contatos por nome:', err)
+        });
+    }
 }
 
